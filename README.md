@@ -1,66 +1,32 @@
-## Foundry
+# Decentralized Crowdfunding Platform
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Overview
 
-Foundry consists of:
+Welcome to the Decentralized Crowdfunding Platform project! This platform aims to revolutionize crowdfunding by leveraging blockchain technology to provide transparency, security, and global accessibility to fundraising campaigns.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Project Structure
 
-## Documentation
+The project is structured into three main components:
 
-https://book.getfoundry.sh/
+1. **Decentralized Backend**: Implemented using Solidity smart contracts on Sepolia Testnet.
+2. **Centralized Backend**: Handles metadata storage and event logging.
+3. **Frontend**: Provides a user-friendly interface for campaign creation, donation processing, and campaign management.
 
-## Usage
+## Decentralized Backend
 
-### Build
+### Smart Contracts
 
-```shell
-$ forge build
-```
+The decentralized backend is powered by Ethereum smart contracts, facilitating secure and transparent management of crowdfunding campaigns. Key contracts include:
 
-### Test
+- **Campaign.sol**: Manages individual crowdfunding campaigns, including donation handling, campaign states, and withdrawal functionalities.
+- **CampaignFactory.sol**: Facilitates the creation and tracking of multiple crowdfunding campaigns. It manages the deployment of new Campaign instances and stores metadata about each campaign.
 
-```shell
-$ forge test
-```
+### Contract Interactions
 
-### Format
+- **CampaignFactory**: Responsible for deploying new Campaign contracts upon user request and maintaining a list of active campaigns.
+- **Campaign**: Handles individual campaign logic, including donation processing, state management, and owner-specific functionalities.
 
-```shell
-$ forge fmt
-```
+### Testing
 
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+- Comprehensive unit tests ensure the correctness and functionality of each smart contract.
+- Tests cover contract deployments, donation handling, state transitions, and edge cases.
