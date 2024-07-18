@@ -4,6 +4,8 @@ pragma solidity ^0.8.18;
 import "./Campaign.sol";
 
 contract CampaignFactory {
+    error CampaignFactory__InvalidGoalAmount();
+    
     struct CampaignInfo {
         address campaignAddress;
         uint256 goalAmount;
@@ -15,6 +17,9 @@ contract CampaignFactory {
     event CampaignContractCreated(address campaignContract, address owner, uint256 goalAmount);
 
     function createDonation(uint256 goalAmount) external {
+        if (goalAmount <= 0) {
+            revert CampaignFactory__InvalidGoalAmount();
+        }
         Campaign newCampaign = new Campaign(msg.sender, goalAmount);
         s_campaigns.push(newCampaign);
         CampaignInfo memory newCampaignInfo = CampaignInfo({

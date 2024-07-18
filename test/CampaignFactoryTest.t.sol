@@ -82,4 +82,10 @@ contract CampaignFactoryTest is Test{
         assertEq(expectedOwner1, ownersArray[0]);
         assertEq(expectedOwner2, ownersArray[1]);
     }
+
+    function testDonationRevertsOnInvalidGoalAmount() public {
+        vm.expectRevert();
+        vm.prank(USER);
+        factory.createDonation(0);
+    }
 }
